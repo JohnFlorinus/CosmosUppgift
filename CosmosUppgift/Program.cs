@@ -1,6 +1,7 @@
 using Microsoft.Azure.Cosmos;
 using CosmosUppgift.Endpoints;
 using System.Xml.Linq;
+using CosmosUppgift.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,6 @@ builder.Services.AddSwaggerGen();
 string cosmosConn = builder.Configuration["CosmosConn"]!;
 string databaseId = "SalesDB";
 string customerContainerId = "Customers";
-
 
 var cosmosClient = new CosmosClient(cosmosConn, new CosmosClientOptions
 {

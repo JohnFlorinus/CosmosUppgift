@@ -17,7 +17,7 @@ public class Function1
     }
 
     [Function("CustomerFunction")]
-    public async void Run([CosmosDBTrigger(
+    public async Task Run([CosmosDBTrigger(
         databaseName: "SalesDB",
         containerName: "Customers",
         Connection = "CosmosDB_Connection",
@@ -28,7 +28,7 @@ public class Function1
         if (input != null && input.Count > 0)
         {
             _logger.LogInformation(@$"En ny kund har lagts till eller uppdaterats: {input[0].Name}
-            Skickar mail till ansvarig säljare {input[0].Responsible.Name}");
+Skickar mail till ansvarig säljare {input[0].Responsible.Name}");
             await EmailHelper.SendEmailToResponsible(input[0]);
         }
     }
